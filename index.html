@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Expeditions — Gurgaon & Beyond</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+        }
+        .adventure-card {
+            background: linear-gradient(145deg, #131c2e, #0f1624);
+            border: 1px solid #1e293b;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .adventure-card:hover {
+            border-color: #e11d48;
+            box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.1);
+        }
+        .dragging {
+            opacity: 0.5;
+            background: #1e293b;
+            border: 2px dashed #e11d48;
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen pb-12">
+
+    <header class="relative overflow-hidden border-b border-slate-800 bg-slate-950 py-12 mb-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(225,29,72,0.1),transparent_50%)]"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center md:text-left md:flex md:items-center md:justify-between">
+            <div>
+                <span class="text-xs font-bold tracking-widest text-rose-400 uppercase bg-rose-950/50 border border-rose-900/50 px-3 py-1 rounded-full">Explorer's Logbook</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white">Weekend Expeditions</h1>
+                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-xl">
+                    52 destinations across NCR, neighboring states, and back home. Break the monotony of tech prep and code sprints by tracking your real-world exploration.
+                </p>
+            </div>
+            <div class="mt-6 md:mt-0 flex gap-3 justify-center">
+                <button onclick="exportData()" class="flex items-center gap-2 px-3 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-medium transition">
+                    <i data-lucide="download" class="w-4 h-4 text-slate-400"></i> Export Map
+                </button>
+                <label class="flex items-center gap-2 px-3 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-medium transition cursor-pointer">
+                    <i data-lucide="upload" class="w-4 h-4 text-slate-400"></i> Import Map
+                    <input type="file" id="importFile" class="hidden" accept=".json" onchange="importData(event)">
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-6">
+
+        <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-xl">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                <i data-lucide="
